@@ -28,6 +28,7 @@ This Laravel application demonstrates how to use RabbitMQ as a queue driver to d
 ```bash
 git clone https://github.com/your-username/rabbitmq-laravel-job-processor.git
 cd rabbitmq-laravel-job-processor
+```
 
 
 2. **Install Dependencies**
@@ -35,10 +36,12 @@ cd rabbitmq-laravel-job-processor
 ```bash
 composer install
 Copy .env and Configure
+```
 
 ```bash
 cp .env.example .env
 Update your .env with RabbitMQ settings:
+```
 
 ```bash
 QUEUE_CONNECTION=rabbitmq
@@ -48,4 +51,5 @@ RABBITMQ_PORT=5672
 RABBITMQ_USER=user
 RABBITMQ_PASSWORD=password
 RABBITMQ_VHOST=/
+```
 
