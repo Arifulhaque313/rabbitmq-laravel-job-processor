@@ -35,13 +35,14 @@ cd rabbitmq-laravel-job-processor
 
 ```bash
 composer install
-Copy .env and Configure
 ```
+
+3. **Copy .env and Configure**
 
 ```bash
 cp .env.example .env
-Update your .env with RabbitMQ settings:
 ```
+Update your .env with RabbitMQ settings:
 
 ```bash
 QUEUE_CONNECTION=rabbitmq
@@ -52,4 +53,42 @@ RABBITMQ_USER=user
 RABBITMQ_PASSWORD=password
 RABBITMQ_VHOST=/
 ```
+
+4. **Generate App Key**
+```bash
+php artisan key:generate
+```
+
+5. **Run the Queue Worker**
+```bash
+php artisan queue:work
+```
+
+6. **Start the Server**
+```bash
+php artisan serve
+```
+
+7. **Send a Test Job**
+Visit http://localhost:8000/send-message to dispatch a job to RabbitMQ.
+
+**📄 Example Job**
+```php
+Route::get('/send-message', function () {
+    ProcessRabbitMQMessage::dispatch();
+    return "Message sent to RabbitMQ!";
+});
+```
+
+**📄 Log output**
+```pgsql
+[date] local.INFO: RabbitMQ Job processed successfully
+```
+
+**✅ License**
+MIT License
+
+Made with ❤️ by Ariful Haque Sajib
+
+
 
